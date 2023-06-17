@@ -8,7 +8,7 @@ const outputStyle = css`
   align-items: center;
   padding: 11px 20px;
   gap: 10px;
-  width: 254px;
+  width: auto;
   height: 50px;
   background: #ffffff;
   flex: none;
@@ -23,7 +23,7 @@ const outputLabelStyle = css`
   align-items: flex-start;
   padding: 0px;
   gap: 4px;
-  width: 30px;
+  width: auto;
   height: 28px;
   flex: none;
   order: 0;
@@ -45,7 +45,7 @@ const dollarStyle = css`
   flex-grow: 0;
 `;
 const resultStyle = css`
-  width: 13px;
+  width: auto;
   height: 28px;
   font-family: "Inter";
   font-style: normal;
@@ -65,7 +65,6 @@ function Calculator() {
       <div css={outputLabelStyle}>
         <label css={dollarStyle}>$</label>
         <label css={resultStyle}>1</label>{" "}
-        {/* pending to make result stay center */}
       </div>
     </div>
   );
