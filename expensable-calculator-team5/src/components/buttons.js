@@ -43,6 +43,9 @@ const buttonStyle = css`
   &:hover {
     background: #abb2b9;
   }
+  &:active {
+    background: #9a9ea2;
+  }
 `;
 
 const labelStyle = css`
@@ -68,6 +71,9 @@ const bigButtonStyle = css`
   border: none;
   &:hover {
     background: #0982a0;
+  }
+  &:active {
+    background: #0d738e;
   }
 `;
 
