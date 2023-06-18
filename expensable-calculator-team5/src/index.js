@@ -5,6 +5,6 @@ import App from "./app";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <App title={"Groceries"} color={"#06b6d4"} />
   </React.StrictMode>
 );

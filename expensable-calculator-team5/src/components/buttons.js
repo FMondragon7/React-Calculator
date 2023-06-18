@@ -5,114 +5,114 @@ import deleteImage from "../assets/delete.png";
 import { ReactComponent as CheckImage } from "../assets/check.svg";
 import { ReactComponent as EqualImage } from "../assets/equal.svg";
 
-const gridStyle = css`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 1px;
-  width: auto;
-  height: 203px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-`;
+function Buttons({ current, color, ...props }) {
+  const gridStyle = css`
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1px;
+    width: auto;
+    height: 203px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  `;
 
-const columnStyle = css`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 1px;
-  width: 50px;
-  height: 203px;
-  flex: none;
-  flex-grow: 0;
-`;
+  const columnStyle = css`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 1px;
+    width: 50px;
+    height: 203px;
+    flex: none;
+    flex-grow: 0;
+  `;
 
-const buttonStyle = css`
-  display: flex;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  background: #f3f4f6;
-  flex: none;
-  flex-grow: 0;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  &:hover,
-  &:focus {
-    background: #abb2b9;
-    outline: none;
-  }
-  &:active {
-    background: #9a9ea2;
-  }
-`;
+  const buttonStyle = css`
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background: #f3f4f6;
+    flex: none;
+    flex-grow: 0;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    &:hover,
+    &:focus {
+      background: #abb2b9;
+      outline: none;
+    }
+    &:active {
+      background: #9a9ea2;
+    }
+  `;
 
-const labelStyle = css`
-  cursor: pointer;
-  pointer-events: none;
-  width: auto;
-  height: 28px;
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
-  text-align: center;
-  color: #4b5563;
-`;
+  const labelStyle = css`
+    cursor: pointer;
+    pointer-events: none;
+    width: auto;
+    height: 28px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    text-align: center;
+    color: #4b5563;
+  `;
 
-const bigButtonStyle = css`
-  cursor: pointer;
-  width: 50px;
-  height: 101px;
-  background: #06b6d4;
-  align-items: center;
-  justify-content: center;
-  flex: none;
-  flex-grow: 0;
-  border: none;
-  &:hover,
-  &:focus {
-    background: #0982a0;
-    outline: none;
-  }
-  &:active {
-    background: #0d738e;
-  }
-`;
+  const bigButtonStyle = css`
+    cursor: pointer;
+    width: 50px;
+    height: 101px;
+    background: ${color};
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    flex-grow: 0;
+    border: none;
+    &:hover,
+    &:focus {
+      opacity: 0.5;
+      outline: none;
+    }
+    &:active {
+      opacity: 1;
+    }
+  `;
 
-const calendarStyle = css`
-  cursor: pointer;
-  width: 16.67px;
-  height: 16.67px;
-`;
+  const calendarStyle = css`
+    cursor: pointer;
+    width: 16.67px;
+    height: 16.67px;
+  `;
 
-const deleteStyle = css`
-  cursor: pointer;
-  pointer-events: none;
-  width: 19.97px;
-  height: 15px;
-`;
+  const deleteStyle = css`
+    cursor: pointer;
+    pointer-events: none;
+    width: 19.97px;
+    height: 15px;
+  `;
 
-const checkStyle = css`
-  cursor: pointer;
-  pointer-events: none;
-  width: 16.67px;
-  height: 13.33px;
-`;
+  const checkStyle = css`
+    cursor: pointer;
+    pointer-events: none;
+    width: 16.67px;
+    height: 13.33px;
+  `;
 
-const equalStyle = css`
-  cursor: pointer;
-  pointer-events: none;
-  width: 13.33px;
-  height: 9.17px;
-`;
+  const equalStyle = css`
+    cursor: pointer;
+    pointer-events: none;
+    width: 13.33px;
+    height: 9.17px;
+  `;
 
-function Buttons({ current, ...props }) {
   function handleButtonClick(name) {
     props.onButtonClick(name);
   }
