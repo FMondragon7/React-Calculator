@@ -112,7 +112,7 @@ const equalStyle = css`
   height: 9.17px;
 `;
 
-function Buttons({ ...props }) {
+function Buttons({ current, ...props }) {
   function handleButtonClick(name) {
     props.onButtonClick(name);
   }
@@ -369,13 +369,17 @@ function Buttons({ ...props }) {
           </label>
         </button>
         <button
-          name="check/equal"
+          name={current ? "equal" : "check"}
           css={css`
             ${bigButtonStyle} order: 2;
           `}
           onClick={(event) => handleButtonClick(event.target.name)}
         >
-          <CheckImage name="check/equal-img" css={checkStyle} />
+          {current ? (
+            <EqualImage name="equal-img" css={equalStyle} />
+          ) : (
+            <CheckImage name="check-img" css={checkStyle} />
+          )}
         </button>
       </div>
     </section>

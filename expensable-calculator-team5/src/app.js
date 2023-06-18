@@ -119,6 +119,7 @@ function App() {
     prevNumber: null,
     operant: null,
     currentNumber: "0",
+    current: false,
   });
 
   const data = [state.prevNumber, state.operant, state.currentNumber];
@@ -138,8 +139,9 @@ function App() {
       setState({
         ...state,
         prevNumber: state.currentNumber,
-        currentNumber: null,
         operant: value,
+        currentNumber: null,
+        current: true,
       });
     }
   }
@@ -150,6 +152,7 @@ function App() {
       prevNumber: null,
       operant: null,
       currentNumber: "0",
+      current: false,
     });
   }
 
@@ -177,6 +180,7 @@ function App() {
       <section css={calculatorStyle}>
         <Output data={data} />
         <Buttons
+          current={state.current}
           onButtonClick={handleButtonClick}
           onOperationClick={handleOperationClick}
           onClearClick={handleClearClick}
