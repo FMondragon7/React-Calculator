@@ -145,7 +145,22 @@ function App() {
   }
 
   function handleClearClick() {
-    setState({ ...state, prevNumber: null, operant: null, currentNumber: "0" });
+    setState({
+      ...state,
+      prevNumber: null,
+      operant: null,
+      currentNumber: "0",
+    });
+  }
+
+  function handlePeriodClick(value) {
+    if (!state.currentNumber) {
+      setState({ ...state, currentNumber: "0." });
+      return;
+    }
+    if (state.currentNumber.includes(".")) return;
+
+    setState({ ...state, currentNumber: (state.currentNumber += value) });
   }
 
   return (
@@ -165,6 +180,7 @@ function App() {
           onButtonClick={handleButtonClick}
           onOperationClick={handleOperationClick}
           onClearClick={handleClearClick}
+          onPeriodClick={handlePeriodClick}
         />
       </section>
       <section css={dateStyle}>

@@ -112,17 +112,21 @@ const equalStyle = css`
   height: 9.17px;
 `;
 
-function Buttons({ onButtonClick, onOperationClick, onClearClick }) {
+function Buttons({ ...props }) {
   function handleButtonClick(name) {
-    onButtonClick(name);
+    props.onButtonClick(name);
   }
 
   function handleOperationClick(name) {
-    onOperationClick(name);
+    props.onOperationClick(name);
   }
 
   function handleClearClick() {
-    onClearClick();
+    props.onClearClick();
+  }
+
+  function handlePeriodClick(name) {
+    props.onPeriodClick(name);
   }
 
   return (
@@ -326,7 +330,7 @@ function Buttons({ onButtonClick, onOperationClick, onClearClick }) {
           css={css`
             ${buttonStyle} order: 3;
           `}
-          onClick={(event) => handleButtonClick(event.target.name)}
+          onClick={(event) => handlePeriodClick(event.target.name)}
         >
           <label name="decimal-point" css={labelStyle}>
             .
