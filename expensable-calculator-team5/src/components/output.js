@@ -9,12 +9,10 @@ const outputStyle = css`
   padding: 11px 20px;
   gap: 10px;
   width: auto;
-  height: 50px;
+  min-height: 50px;
   background: #ffffff;
-  flex: none;
   order: 0;
   align-self: stretch;
-  flex-grow: 0;
 `;
 
 const outputLabelStyle = css`
@@ -24,10 +22,8 @@ const outputLabelStyle = css`
   padding: 0px;
   gap: 4px;
   width: auto;
-  height: 28px;
-  flex: none;
+  min-height: 28px;
   order: 0;
-  flex-grow: 0;
 `;
 
 const dollarStyle = css`
@@ -40,13 +36,12 @@ const dollarStyle = css`
   line-height: 28px;
   text-align: center;
   color: #4b5563;
-  flex: none;
   order: 0;
-  flex-grow: 0;
 `;
+
 const resultStyle = css`
   width: auto;
-  height: 28px;
+  min-height: 28px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -54,17 +49,19 @@ const resultStyle = css`
   line-height: 28px;
   text-align: center;
   color: #4b5563;
-  flex: none;
   order: 1;
-  flex-grow: 0;
+  word-wrap: break-word;
+  word-break: break-all;
 `;
 
-function Output() {
+function Output({ data }) {
+  const operation = data.filter((element) => element !== null).join("");
+
   return (
     <section css={outputStyle}>
       <div css={outputLabelStyle}>
         <label css={dollarStyle}>$</label>
-        <label css={resultStyle}>1</label>
+        <label css={resultStyle}>{operation}</label>
       </div>
     </section>
   );

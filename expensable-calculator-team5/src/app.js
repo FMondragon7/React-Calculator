@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import React from "react";
 import { css } from "@emotion/react";
 import Output from "./components/output";
 import Buttons from "./components/buttons";
@@ -21,7 +22,6 @@ const addExpenseStyle = css`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 50px;
   box-sizing: border-box;
   background: #06b6d4;
   flex: none;
@@ -75,7 +75,7 @@ const calculatorStyle = css`
   padding: 1px;
   gap: 1px;
   width: 256px;
-  height: 279px;
+  min-height: 279px;
   background: #e5e7eb;
   border: 1px solid #e5e7eb;
   flex: none;
@@ -115,6 +115,39 @@ const dateLabelStyle = css`
 `;
 
 function App() {
+  const [state, setState] = React.useState({
+    prevNumber: null,
+    operant: null,
+    currentNumber: "0",
+  });
+
+  const data = [state.prevNumber, state.operant, state.currentNumber];
+
+  function handleButtonClick(value) {
+    if (state.currentNumber === "0" && value === "0") return;
+    if (state.currentNumber === "0" || !state.currentNumber) {
+      setState({ ...state, currentNumber: value });
+    } else {
+      setState({ ...state, currentNumber: (state.currentNumber += value) });
+    }
+    return;
+  }
+
+  function handleOperationClick(value) {
+    if (state.currentNumber !== "0" && !state.prevNumber) {
+      setState({
+        ...state,
+        prevNumber: state.currentNumber,
+        currentNumber: null,
+        operant: value,
+      });
+    }
+  }
+
+  function handleClearClick() {
+    setState({ ...state, prevNumber: null, operant: null, currentNumber: "0" });
+  }
+
   return (
     <main css={appStyle}>
       <section css={addExpenseStyle}>
@@ -127,8 +160,12 @@ function App() {
         </div>
       </section>
       <section css={calculatorStyle}>
-        <Output />
-        <Buttons />
+        <Output data={data} />
+        <Buttons
+          onButtonClick={handleButtonClick}
+          onOperationClick={handleOperationClick}
+          onClearClick={handleClearClick}
+        />
       </section>
       <section css={dateStyle}>
         <p css={dateLabelStyle}>
