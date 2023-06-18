@@ -166,6 +166,30 @@ function App() {
     setState({ ...state, currentNumber: (state.currentNumber += value) });
   }
 
+  function handleDeleteClick() {
+    if (state.currentNumber === "0" && !state.operant && !state.prevNumber)
+      return;
+    if (!state.currentNumber) {
+      setState({
+        ...state,
+        currentNumber: state.prevNumber,
+        prevNumber: null,
+        operant: null,
+        current: false,
+      });
+      return;
+    }
+    if (
+      state.currentNumber.length === 1 &&
+      !state.operant &&
+      !state.prevNumber
+    ) {
+      setState({ ...state, currentNumber: "0" });
+      return;
+    }
+    setState({ ...state, currentNumber: state.currentNumber.slice(0, -1) });
+  }
+
   return (
     <main css={appStyle}>
       <section css={addExpenseStyle}>
@@ -181,6 +205,7 @@ function App() {
         <Output data={data} />
         <Buttons
           current={state.current}
+          onDeleteClick={handleDeleteClick}
           onButtonClick={handleButtonClick}
           onOperationClick={handleOperationClick}
           onClearClick={handleClearClick}

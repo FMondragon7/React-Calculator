@@ -128,6 +128,9 @@ function Buttons({ current, ...props }) {
   function handlePeriodClick(name) {
     props.onPeriodClick(name);
   }
+  function handleDeleteClick() {
+    props.onDeleteClick();
+  }
 
   return (
     <section name="buttons" css={gridStyle}>
@@ -348,7 +351,7 @@ function Buttons({ current, ...props }) {
           css={css`
             ${buttonStyle} order: 0;
           `}
-          onClick={(event) => handleButtonClick(event.target.name)}
+          onClick={() => handleDeleteClick()}
         >
           <img
             src={deleteImage}
