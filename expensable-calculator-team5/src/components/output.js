@@ -59,15 +59,15 @@ const resultStyle = css`
   flex-grow: 0;
 `;
 
-function Calculator() {
+function Output() {
   return (
-    <div css={outputStyle}>
+    <section css={outputStyle}>
       <div css={outputLabelStyle}>
         <label css={dollarStyle}>$</label>
-        <label css={resultStyle}>1</label>{" "}
+        <label css={resultStyle}>1</label>
       </div>
-    </div>
+    </section>
   );
 }
 
-export default Calculator;
+export default Output;
