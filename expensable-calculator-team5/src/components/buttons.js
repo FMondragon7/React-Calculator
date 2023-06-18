@@ -40,6 +40,9 @@ const buttonStyle = css`
   align-items: center;
   justify-content: center;
   border: none;
+  &:hover {
+    background: #abb2b9;
+  }
 `;
 
 const labelStyle = css`
@@ -63,6 +66,9 @@ const bigButtonStyle = css`
   flex: none;
   flex-grow: 0;
   border: none;
+  &:hover {
+    background: #0982a0;
+  }
 `;
 
 const calendarStyle = css`
