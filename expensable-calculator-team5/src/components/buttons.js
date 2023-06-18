@@ -128,8 +128,13 @@ function Buttons({ current, ...props }) {
   function handlePeriodClick(name) {
     props.onPeriodClick(name);
   }
+
   function handleDeleteClick() {
     props.onDeleteClick();
+  }
+
+  function handleSubmitClick(name) {
+    props.onSubmitClick(name);
   }
 
   return (
@@ -376,7 +381,7 @@ function Buttons({ current, ...props }) {
           css={css`
             ${bigButtonStyle} order: 2;
           `}
-          onClick={(event) => handleButtonClick(event.target.name)}
+          onClick={(event) => handleSubmitClick(event.target.name)}
         >
           {current ? (
             <EqualImage name="equal-img" css={equalStyle} />

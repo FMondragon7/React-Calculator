@@ -190,6 +190,67 @@ function App() {
     setState({ ...state, currentNumber: state.currentNumber.slice(0, -1) });
   }
 
+  function handleSubmitClick(value) {
+    if (value === "equal") {
+      let result;
+      switch (state.operant) {
+        case "÷":
+          result = !state.currentNumber
+            ? state.prevNumber / state.prevNumber
+            : state.prevNumber / state.currentNumber;
+          setState({
+            ...state,
+            currentNumber: result,
+            prevNumber: null,
+            operant: null,
+            current: false,
+          });
+          break;
+        case "×":
+          result = !state.currentNumber
+            ? state.prevNumber * state.prevNumber
+            : state.prevNumber * state.currentNumber;
+          setState({
+            ...state,
+            currentNumber: result,
+            prevNumber: null,
+            operant: null,
+            current: false,
+          });
+          break;
+        case "-":
+          result = !state.currentNumber
+            ? state.prevNumber - state.prevNumber
+            : state.prevNumber - state.currentNumber;
+          setState({
+            ...state,
+            currentNumber: result,
+            prevNumber: null,
+            operant: null,
+            current: false,
+          });
+          break;
+        case "+":
+          result = !state.currentNumber
+            ? Number(state.prevNumber) + Number(state.prevNumber)
+            : Number(state.prevNumber) + Number(state.currentNumber);
+          setState({
+            ...state,
+            currentNumber: result,
+            prevNumber: null,
+            operant: null,
+            current: false,
+          });
+          break;
+
+        default:
+          break;
+      }
+    } else {
+      console.log(state.currentNumber);
+    }
+  }
+
   return (
     <main css={appStyle}>
       <section css={addExpenseStyle}>
@@ -205,6 +266,7 @@ function App() {
         <Output data={data} />
         <Buttons
           current={state.current}
+          onSubmitClick={handleSubmitClick}
           onDeleteClick={handleDeleteClick}
           onButtonClick={handleButtonClick}
           onOperationClick={handleOperationClick}
